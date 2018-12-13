@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th >Status Name</th>
+        <th >Info Page</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of statuses; let i=index">
+        <td>{{l.name}}</td>
+        <td><a  routerLink="/state/{{l.id}}">Status Info</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
