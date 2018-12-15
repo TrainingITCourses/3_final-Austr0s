@@ -1,21 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { State } from './store/reducers';
-import { LoadLaunches } from './store/reducers/launches/launches.actions';
-import { LoadStatuses } from './store/reducers/statuses/statuses.actions';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 
 @Component({
   // TODO: CONFIGURE CHANGEDETECTIONSTRATEGY.ONPUSH
   // changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'speed';
-  constructor(private store: Store<State>) {}
-  ngOnInit(): void {
-    this.store.dispatch(new LoadLaunches());
-    this.store.dispatch(new LoadStatuses());
-  }
+  constructor() {}
+
 }
