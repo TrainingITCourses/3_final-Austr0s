@@ -1,21 +1,24 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { State } from './store/reducers';
-import { LoadLaunches } from './store/reducers/launches/launches.actions';
-import { LoadStatuses } from './store/reducers/statuses/statuses.actions';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
+
 
 @Component({
-  // TODO: CONFIGURE CHANGEDETECTIONSTRATEGY.ONPUSH
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  // GLOBAL ONPUSH:
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit{
-  title = 'speed';
-  constructor(private store: Store<State>) {}
-  ngOnInit(): void {
-    this.store.dispatch(new LoadLaunches());
-    this.store.dispatch(new LoadStatuses());
+export class AppComponent{
+  title = 'Angular Speed: aplicaciones de alto rendimiento';
+  appVersion = '1.1';
+  constructor(swUpdate: SwUpdate) {
+    if(swUpdate.isEnabled){
+      swUpdate.available.subscribe(
+        (event: UpdateAvailableEvent) => {
+          const msg = 'Hay una nueva versión de la App disponible. ¿Deseas instalarla?';
+          if(confirm(msg)) window.location.reload();
+        }
+      );
+    }
   }
 }

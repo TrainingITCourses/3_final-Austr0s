@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Status Name</th>
+        <th>Status Description</th>
+        <th>Status Changed Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of statuses; let i=index">
+        <td>{{l.name}}</td>
+        <td>{{l.description}}</td>
+        <td>{{l.changed}}</td>
+      </tr>
+    </tbody>
+  </table>

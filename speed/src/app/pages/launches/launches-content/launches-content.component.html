@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Haz click en cualquier lanzamiento para entrar en sus detalles:</h5>
+    <app-counter [counter]="counter"></app-counter>
+  </div>
+
+  <div class="card-body">
+    <div class="card-body text-right">
+      <button type="button" class="btn btn-dark" (click)="filterByDate()" >Order By Date</button>
+    </div>
+    <div class="container">
+      <app-launches-list [launches]="launches" [statusId]="statusId"></app-launches-list>
+    </div>
+  </div>
+</div>

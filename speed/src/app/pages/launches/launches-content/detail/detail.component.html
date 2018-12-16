@@ -1,0 +1,14 @@
+<div class="d-flex flex-column" >
+    <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">{{launch.name}}</h5>
+          <p>Net Date: {{launch.net}}</p>
+          <p>Changed: {{launch.changed}}</p>
+          <p>Location: {{launch.location.pads[0].name}}</p>
+          <p><a [href]="launch.location.pads[0].wikiURL">Information on Wikipedia</a></p>
+          <p><a [href]="launch.location.pads[0].mapURL">Maps Coords</a></p>
+          <a routerLink="/launches" class="btn btn-primary">Return Launches</a>
+        </div>
+        <img class="card-img-top" [src]="launch.rocket.imageURL" alt="Card image cap">
+      </div>
+</div>
