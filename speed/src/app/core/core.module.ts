@@ -12,6 +12,7 @@ import { LaunchesEffects } from '../store/reducers/launches/launches.effects';
 import { StatusesEffects } from '../store/reducers/statuses/statuses.effects';
 import { ContainerComponent } from './container/container.component';
 import { NavComponent } from './container/nav/nav.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { NavComponent } from './container/nav/nav.component';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
-    EffectsModule.forRoot([LaunchesEffects, StatusesEffects])
+    EffectsModule.forRoot([LaunchesEffects, StatusesEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [ContainerComponent, NavComponent],
   exports: [ContainerComponent]

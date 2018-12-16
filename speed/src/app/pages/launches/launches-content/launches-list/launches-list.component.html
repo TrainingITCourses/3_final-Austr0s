@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-nowrap">Launch Name</th>
+        <th class="text-nowrap">Launch Location</th>
+        <th class="text-nowrap">Launch Net</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of launches; let i=index"  routerLink="detail/{{l.id}}">
+        <td>{{l.name}}</td>
+        <td>{{l.location.name}}</td>
+        <td>{{l.net}}</td>
+      </tr>
+    </tbody>
+  </table>
